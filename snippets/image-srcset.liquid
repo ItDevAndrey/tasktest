@@ -1,0 +1,61 @@
+{% assign variablesWidth = '' %}
+{% if isMobile == true %}
+    {% assign variablesWidth = '[200, 300, 400, 700]' %}
+{% else %}
+    {% assign variablesWidth = '[450, 660, 900, 1320, 1800, 2136, 2400]' %}
+    {% comment %} {% assign variablesWidth = '[320, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]' %} {% endcomment %}
+{% endif %}
+
+{% if variables != blank %}
+    {% assign variablesWidth = variables %}
+{% endif %}
+
+
+{%-liquid
+  if section.index == 1
+    assign fetchPriority = true
+    assign eager = true
+  endif
+%}
+
+{% assign varianblesWidthArray = variablesWidth | replace: '[', '' | replace: ']', '' | escape | split: ',' %}
+
+{% if image == blank %}
+    <img class="lazyloaded placeholder" src="{{'placeholder.svg' | asset_url }}" alt="">
+{% else %}
+    {% unless is_file %}
+        {%- assign img_url = image | img_url: '10x' -%}
+        {%- assign data_src_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        <img {% if image_id %} id="{{ img_id }}" {% endif %} 
+        class="lazyload {% if img_classes %} {{ img_classes }}{% endif %}" 
+        src="{{'placeholder.png' | asset_url }}"
+        data-src="{{ data_src_url }}" 
+        data-widths="{{ variablesWidth }}" 
+        data-aspectratio="{{ image.aspect_ratio }}" 
+        data-sizes="auto" {% if attr %} {{ attr }} {% endif %} 
+        {% if alt %} alt="{{alt}}" {% else %} alt="{{ image.alt }}" {% endif %} 
+        {% if eager != true %}
+            loading="lazy" 
+        {% else %}
+            loading="eager" 
+        {% endif %}
+        {% if fetchPriority == true %}fetchpriority="high"{% endif %}
+        >
+    {% else %}
+        {%- assign img_url = image | file_img_url: '10x' -%}
+        {%- assign data_src_url = image | file_img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        <img {% if image_id %} id="{{ img_id }}" {% endif %} 
+        class="lazyload {% if img_classes %} {{ img_classes }}{% endif %}" 
+        src="{{ img_url }}" 
+        data-src="{{ data_src_url }}" 
+        data-widths="{{ variablesWidth }}" 
+        data-sizes="auto" {% if attr %} {{ attr }} {% endif %} 
+        {% if alt %} alt="{{alt}}" {% else %} alt="{{ image.alt }}" {% endif %}
+        {% if eager != true %}
+            loading="lazy" 
+        {% else %}
+            loading="eager" 
+        {% endif %}
+        {% if fetchPriority == true %}fetchpriority="high"{% endif %}>
+    {% endunless %}
+{% endif %}
