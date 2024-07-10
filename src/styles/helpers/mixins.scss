@@ -1,0 +1,32 @@
+@function strip-units($value) {
+  @return ($value / ($value * 0 + 1));
+}
+
+/// Returns the value in rem for a given pixel value.
+/// @param {Number} $pxval - The pixel value to be converted.
+/// @return {Number} The converted value in rem.
+
+@function rem($pxval) {
+  @if not unitless($pxval) {
+    $pxval: strip-units($pxval);
+  }
+
+  @return ($pxval / 16) * 1rem;
+}
+
+/// Get color with specified opacity
+/// @param {Color} $color - Base color.
+/// @param {Number} $opacity - The opacity to apply.
+/// @return {Color} - The modified color
+
+@function color($color, $opacity: 1) {
+  @if $opacity != 1 {
+    @return transparentize($color, 1 - $opacity);
+  } @else {
+    @return $color;
+  }
+} 
+
+@mixin media($size) {
+  @media screen and (max-width: $size) { @content; }
+}

@@ -1,0 +1,13 @@
+{% if image == blank %}
+    <img class="lazyloaded placeholder" src="{{'placeholder.svg' | asset_url }}" alt="">
+{% else %}
+    {% unless is_file %}
+        {%- assign img_url = image | img_url: '10x' -%}
+        {%- assign data_src_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        <img {% if image_id %} id="{{ img_id }}" {% endif %} class="lazyload {% if img_classes %} {{ img_classes }}{% endif %}" src="{{ img_url }}" data-src="{{ data_src_url }}" data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="{{ image.aspect_ratio }}" data-sizes="auto" {% if attr %} {{ attr }} {% endif %} {% if alt %} alt="{{alt}}" {% else %} alt="{{ image.alt }}" {% endif %}>
+    {% else %}
+        {%- assign img_url = image | file_img_url: '10x' -%}
+        {%- assign data_src_url = image | file_img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        <img {% if image_id %} id="{{ img_id }}" {% endif %} class="lazyload {% if img_classes %} {{ img_classes }}{% endif %}" src="{{ img_url }}" data-src="{{ data_src_url }}" data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-sizes="auto" {% if attr %} {{ attr }} {% endif %} {% if alt %} alt="{{alt}}" {% else %} alt="{{ image.alt }}" {% endif %}>
+    {% endunless %}
+{% endif %}
