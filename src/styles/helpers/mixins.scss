@@ -30,3 +30,9 @@
 @mixin media($size) {
   @media screen and (max-width: $size) { @content; }
 }
+
+@mixin media-min($size) {
+  @media screen and (min-width: $size) {
+    @content;
+  }
+}

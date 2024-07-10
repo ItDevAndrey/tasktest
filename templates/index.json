@@ -4,9 +4,84 @@
       "type": "banner",
       "settings": {
       }
+    },
+    "info_slider_RT34CE": {
+      "type": "info-slider",
+      "blocks": {
+        "slide_94ccYY": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/image_69.png",
+            "mobile_image": "shopify:\/\/shop_images\/image_69_1.png",
+            "title": "niacinamide",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et",
+            "content_color": "#ffffff",
+            "content_color_mobile": "#fff",
+            "position_x": "right",
+            "position_y": "bottom"
+          }
+        },
+        "slide_kWmtRE": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/image_69.png",
+            "mobile_image": "shopify:\/\/shop_images\/image_69_1.png",
+            "title": "peptides",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  2",
+            "content_color": "#ffffff",
+            "content_color_mobile": "#fff",
+            "position_x": "center",
+            "position_y": "center"
+          }
+        },
+        "slide_yqdWeP": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/channels4_profile.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/image_69_1.png",
+            "title": "hialuronic acid",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  3",
+            "content_color": "#000000",
+            "content_color_mobile": "#fff",
+            "position_x": "center",
+            "position_y": "top"
+          }
+        },
+        "slide_9XEM9w": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/image_69.png",
+            "mobile_image": "shopify:\/\/shop_images\/channels4_profile.jpg",
+            "title": "Marula oil",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 4",
+            "content_color": "#ffffff",
+            "content_color_mobile": "#000000",
+            "position_x": "right",
+            "position_y": "bottom"
+          }
+        }
+      },
+      "block_order": [
+        "slide_94ccYY",
+        "slide_kWmtRE",
+        "slide_yqdWeP",
+        "slide_9XEM9w"
+      ],
+      "settings": {
+        "image_on_the_left": true,
+        "title": "no bullshit inside",
+        "color": "#231f20",
+        "background_color_categories": "#58656f",
+        "categories_color": "#9aa3a9",
+        "padding-top": 60,
+        "padding-bottom": 60,
+        "padding-top-mobile": 40,
+        "padding-bottom-mobile": 40
+      }
     }
   },
   "order": [
-    "277d4f76-65ea-4cfd-a637-15557b812d68"
+    "277d4f76-65ea-4cfd-a637-15557b812d68",
+    "info_slider_RT34CE"
   ]
 }

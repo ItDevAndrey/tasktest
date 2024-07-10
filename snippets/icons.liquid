@@ -1,10 +1,13 @@
 {% case icon %}
-    {% when 'close' %}
-        <svg class="{{icon}}" height="16" viewbox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-                <style>.{{icon}}{fill:#4e4b48;}</style>
-            </defs>
-            <g transform="translate(-60.953 -50.953)"><path class="{{icon}}" d="M0,0,21.241.055l0,1.328L0,1.328Z" transform="translate(61.931 50.953) rotate(45)"/><path class="{{icon}}" d="M0,.055,21.244,0l0,1.328L0,1.383Z" transform="translate(76.953 51.931) rotate(135)"/></g>
+    {%- when 'arrow-right' -%}
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.83331 14H22.1666" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14 5.83334L22.1667 14L14 22.1667" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    {%- when 'arrow-left' -%}
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.1667 14H5.83335" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14 5.83334L5.83333 14L14 22.1667" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
 
 {% endcase %}

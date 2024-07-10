@@ -1,0 +1,255 @@
+{% if section.blocks.size > 0 %}
+{{ 'section-info-slider.min.css' | asset_url | stylesheet_tag }}
+
+<style>
+  #section-{{ section.id }} {
+    padding-top: {{ section.settings.padding-top | append: 'px' }};
+    padding-bottom: {{ section.settings.padding-bottom | append: 'px' }};
+  }
+
+  @media screen and (max-width: 1024px) {
+    #section-{{ section.id }} {
+      padding-top: {{ section.settings.padding-top-mobile | append: 'px' }};
+      padding-bottom: {{ section.settings.padding-bottom-mobile | append: 'px' }};;
+    }
+  }
+  #section-{{ section.id }} .info-slider-titles h2:not(.is-active) {
+    color: {{ section.settings.categories_color }};
+  }
+</style>
+
+
+<section class="info-slider" id="section-{{ section.id}}">
+  {% if section.settings.title != blank %}
+    <h1 class="info-slider-title"
+      style="color: {{ section.settings.color }}"
+      data-index="{{ forloop.index }}"
+    >
+      {{ section.settings.title }}
+    </h1>
+  {% endif %}
+
+  <div class="info-slider-wrapper {% unless section.settings.image_on_the_left %}image-right{% endunless %}">
+    <div class="info-slider-swiper swiper">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          {% if block.settings.image != blank and block.settings.title != blank %}
+            <div class="swiper-slide">
+              <div class="absolute-img">
+                {% if block.settings.mobile_image != blank %}
+                  {% render 'image-srcset',
+                    image: block.settings.mobile_image,
+                    variables: '[200, 300, 400, 700, 992, 1024]',
+                    img_classes: 'is-mobile'
+                  %}
+                {% endif %}
+                {% render 'image-srcset',
+                  image: block.settings.image
+                %}
+              </div>
+              {% if block.settings.content != blank %}
+                <style>
+                  @media screen and (max-width: 1024px) {
+                    #section-{{ section.id }}-block-{{ block.id }} {
+                      color: {{ block.settings.content_color_mobile | append: '!important' }};
+                    }
+                  }
+                </style>
+
+                <div id="section-{{ section.id }}-block-{{ block.id }}" class="info-slide-content position-x-{{ block.settings.position_x }} position-y-{{ block.settings.position_y }}"
+                  style="color: {{ block.settings.content_color }}"
+                >
+                  {{ block.settings.content }}
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+       <div class="swiper-button-prev swiper-button">
+        {% render 'icons', icon: 'arrow-left' %}
+      </div>
+      <div class="swiper-button-next swiper-button">
+        {% render 'icons', icon: 'arrow-right' %}
+      </div>
+    </div>
+
+   
+    
+    <div class="info-slider-titles"
+      style="background-color: {{ section.settings.background_color_categories }}"
+    >
+      {% for block in section.blocks %}
+        {% if block.settings.title != blank %}
+          <h2>{{ block.settings.title }}</h2>
+        {% endif %}  
+      {% endfor %}
+    </div>
+  </div>
+
+</section>
+<script src="{{ 'info-slider.js' | asset_url }}" defer></script>
+{% endif %}
+
+
+{% schema %}
+  {
+    "name": "Info slider",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "image_on_the_left",
+        "label": "Image on the left side",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "color",
+        "id": "color",
+        "label": "Color",
+        "default": "#231F20"
+      },
+      {
+        "type": "color",
+        "id": "background_color_categories",
+        "label": "Background color for the categories",
+        "default": "#58656F"
+      },
+      {
+        "type": "color",
+        "id": "categories_color",
+        "label": "Categories text color",
+        "default": "#9aa3a9"
+      },
+      {
+        "type": "range",
+        "id": "padding-top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding top",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding-bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding bottom",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding-top-mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding top mobile",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding-bottom-mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding bottom mobile",
+        "default": 0
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Slide",
+        "type": "slide",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },          
+          {
+            "type": "image_picker",
+            "id": "mobile_image",
+            "label": "Mobile image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "textarea",
+            "id": "content",
+            "label": "Content"
+          },
+          {
+            "type": "color",
+            "id": "content_color",
+            "label": "Content color",
+            "default": "#fff"
+          },
+          {
+            "type": "color",
+            "id": "content_color_mobile",
+            "label": "Content color mobile",
+            "default": "#fff"
+          },
+          {
+            "type": "select",
+            "id": "position_x",
+            "label": "Content position X",
+            "options": [
+              {
+              "value": "left",
+              "label": "Left"
+              },
+              {
+              "value": "center",
+              "label": "Center"
+              },
+              {
+              "value": "right",
+              "label": "Right"
+              }
+            ],
+            "default": "right"
+          },
+          {
+            "type": "select",
+            "id": "position_y",
+            "label": "Content position Y",
+            "options": [
+              {
+              "value": "top",
+              "label": "Top"
+              },
+              {
+              "value": "center",
+              "label": "Center"
+              },
+              {
+              "value": "bottom",
+              "label": "Bottom"
+              }
+            ],
+            "default": "bottom"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Info slider"
+      }
+    ]
+  }
+{% endschema %}
