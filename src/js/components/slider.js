@@ -35,6 +35,5 @@ if (infoCategories.length > 0) {
 
     infoCategories[infoSliderSwiper.realIndex].classList.add('is-active');
     activeItem.elem = infoCategories[infoSliderSwiper.realIndex];
-    console.log(infoCategories[infoSliderSwiper.realIndex]);
   })
 }
