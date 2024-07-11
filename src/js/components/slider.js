@@ -14,7 +14,7 @@ const infoSliderSwiper = new Swiper('.info-slider-swiper', {
 
 const infoCategories = document.querySelectorAll('.info-slider-titles h2');
 
-if (infoCategories) {
+if (infoCategories.length > 0) {
   infoCategories[0].classList.add('is-active');
   const activeItem = {
     elem: infoCategories[0]

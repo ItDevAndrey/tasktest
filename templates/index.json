@@ -16,7 +16,7 @@
             "title": "niacinamide",
             "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et",
             "content_color": "#ffffff",
-            "content_color_mobile": "#fff",
+            "content_color_mobile": "#ffffff",
             "position_x": "right",
             "position_y": "bottom"
           }
@@ -29,7 +29,7 @@
             "title": "peptides",
             "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  2",
             "content_color": "#ffffff",
-            "content_color_mobile": "#fff",
+            "content_color_mobile": "#ffffff",
             "position_x": "center",
             "position_y": "center"
           }
@@ -42,7 +42,7 @@
             "title": "hialuronic acid",
             "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  3",
             "content_color": "#000000",
-            "content_color_mobile": "#fff",
+            "content_color_mobile": "#ffffff",
             "position_x": "center",
             "position_y": "top"
           }

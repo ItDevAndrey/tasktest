@@ -18,7 +18,6 @@
   }
 </style>
 
-
 <section class="info-slider" id="section-{{ section.id}}">
   {% if section.settings.title != blank %}
     <h1 class="info-slider-title"
@@ -74,8 +73,6 @@
       </div>
     </div>
 
-   
-    
     <div class="info-slider-titles"
       style="background-color: {{ section.settings.background_color_categories }}"
     >
@@ -88,9 +85,7 @@
   </div>
 
 </section>
-<script src="{{ 'info-slider.js' | asset_url }}" defer></script>
 {% endif %}
-
 
 {% schema %}
   {

@@ -96,6 +96,7 @@
       color: rgba($color: #FFFFFF, $alpha: 0.4);
       cursor: pointer;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      line-height: 48.2px;
 
       @include media(1024px) {
         font-size: 23px;
@@ -142,6 +143,10 @@
   &-swiper {
     @include media-min(1025px) {
       position: static;
+    }
+
+    .swiper-slide {
+      cursor: grab;
     }
   }
 
